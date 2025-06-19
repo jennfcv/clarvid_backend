@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250619183105"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaIntento",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "resultado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observaciones",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "proximoIntento",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "IntentoEntrega",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "paquete",
+      "relationshipName": "paquete",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

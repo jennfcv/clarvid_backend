@@ -1,0 +1,61 @@
+{
+  "annotations": {
+    "changelogDate": "20250619182505"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "ci",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "disponible",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "fechaIngreso",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "medioTransporte",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Repartidor",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "usuario",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityName": "zonaEntrega",
+      "relationshipName": "zona",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sucursal",
+      "relationshipName": "sucursal",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

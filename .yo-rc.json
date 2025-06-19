@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "GestionPaqueteria",
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "none",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": false,
+    "enableTranslation": false,
+    "entities": [
+      "Sucursal",
+      "Recepcionista",
+      "Repartidor",
+      "PersonaPaquete",
+      "Paquete",
+      "SeguimientoPaquete",
+      "ConfirmacionEntrega",
+      "CalificacionEntrega",
+      "IntentoEntrega",
+      "UbicacionRepartidor",
+      "ZonaEntrega",
+      "Ruta",
+      "ReportePDF"
+    ],
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "ODIwNmYzM2I2NGY5YTRiMGUwMWEzY2U5Nzg4NjgxOTA1ZjZkN2VmMWQ0MjNiMDI5MmNhMTI1MWQ2OWFmOWU4MmQyZTljY2YwZTNjN2FjZTZlNDU3MDI4NDk1MzAyYWUwMmMwYzY1NWMwZDAyMTQ1YjExYWU0YTdiMjZiMjQ1ZTQ=",
+    "languages": ["es"],
+    "lastLiquibaseTimestamp": 1750358105000,
+    "nativeLanguage": "es",
+    "packageName": "com.paqueteria",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "serverPort": "8081",
+    "serviceDiscoveryType": false,
+    "skipClient": true,
+    "skipUserManagement": false,
+    "testFrameworks": ["cucumber"]
+  }
+}

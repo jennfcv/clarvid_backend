@@ -1,0 +1,36 @@
+{
+  "annotations": {
+    "changelogDate": "20250619183205"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "latitud",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "longitud",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaHora",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "UbicacionRepartidor",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "repartidor",
+      "relationshipName": "repartidor",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,11 @@
+id;codigo_seguimiento;descripcion;detalle;peso;fecha_envio;fecha_entrega_estimada;estado;tipo_entrega;direccion_entrega;latitud_entrega;longitud_entrega;confirmado;codigo_qr;ubicacion_actual;fragil;cliente_token_acceso
+1;duh although wire;spattering glass;however till;29565.96;2025-06-19T00:08:38;2025-06-19T04:50:48;ENTREGADO;RETIRO_SUCURSAL;vicinity scaly standard;18086.01;4804.45;false;powerfully;clinch a astride;true;wallaby
+2;pfft cleverly;delete fairly aha;yuck;20474.72;2025-06-19T04:04:59;2025-06-19T00:13:44;INTENTO_FALLIDO;RETIRO_SUCURSAL;thyme lest;14377.97;15672.3;false;represent yearly softly;creator drat illustrious;true;brr besides drat
+3;selfishly doodle part;ferociously narrate;woot;2369;2025-06-19T10:41:16;2025-06-18T21:17:06;PENDIENTE_RETIRO;ENTREGA_DIRECTA;insignificant certainly past;16731.45;13214.2;false;consequently depend;exalt wherever about;true;writhing boggle
+4;character gorgeous;into although;aw flame;32037.45;2025-06-19T03:47:50;2025-06-19T08:26:36;ENTREGADO;ENTREGA_DIRECTA;safely duh juvenile;9781.9;21591.66;false;gee come cinder;including;false;median nicely
+5;pro singing;scrutinise ew idle;comestible;9855.14;2025-06-18T21:22:44;2025-06-19T15:23:36;CANCELADO;ENTREGA_DIRECTA;sheathe whoa hence;4405.11;14472.69;false;however lest purple;meh sate;false;comb boo
+6;even boastfully;on;fluffy;19687.28;2025-06-19T13:53:42;2025-06-18T19:26:02;CANCELADO;ENTREGA_DIRECTA;phooey incidentally waft;23554.04;5931.05;false;off;longboat anti;true;pantyhose
+7;maroon midst cycle;libel;zowie;17890.01;2025-06-19T12:48:54;2025-06-19T02:05:15;EN_REPARTO;ENTREGA_DIRECTA;hungrily when when;1771.51;13422.72;true;discrete how upwardly;towards yippee carelessly;true;sandy around
+8;intelligent ideal whoever;once if;neglect;27413.82;2025-06-19T12:04:24;2025-06-19T08:19:14;CANCELADO;ENTREGA_DIRECTA;qua;25119.76;18348.89;true;sedately;self-assured along;false;glorious unused
+9;afore though cultivated;gently;hmph boohoo gosh;22738.24;2025-06-18T19:38:58;2025-06-19T06:02:50;INTENTO_FALLIDO;ENTREGA_DIRECTA;about selfishly rebound;26419.82;22879.3;true;ick developing inasmuch;recompense hungrily fine;true;apt
+10;excess experienced creator;whose;woot attest;32117.24;2025-06-18T23:14:25;2025-06-19T06:34:32;EN_CAMINO;RETIRO_SUCURSAL;bah interestingly appliance;31542.51;4044.44;true;season boo cinder;while;true;within till

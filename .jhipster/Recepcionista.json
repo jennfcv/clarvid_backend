@@ -1,0 +1,51 @@
+{
+  "annotations": {
+    "changelogDate": "20250619182405"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "ci",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaIngreso",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "observaciones",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Recepcionista",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "usuario",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityName": "sucursal",
+      "relationshipName": "sucursal",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

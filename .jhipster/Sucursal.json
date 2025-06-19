@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20250619182305"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pais",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ciudad",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitud",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longitud",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "Sucursal",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

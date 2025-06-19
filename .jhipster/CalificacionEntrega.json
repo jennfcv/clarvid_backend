@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20250619183005"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "puntaje",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "comentario",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaCalificacion",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "CalificacionEntrega",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "paquete",
+      "relationshipName": "paquete",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

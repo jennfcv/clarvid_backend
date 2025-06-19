@@ -1,0 +1,132 @@
+{
+  "annotations": {
+    "changelogDate": "20250619182705"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "codigoSeguimiento",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detalle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "peso",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaEnvio",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaEntregaEstimada",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoPaquete",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "REGISTRADO,EN_CAMINO,EN_REPARTO,ENTREGADO,PENDIENTE_RETIRO,INTENTO_FALLIDO,CANCELADO"
+    },
+    {
+      "fieldName": "tipoEntrega",
+      "fieldType": "TipoEntrega",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "RETIRO_SUCURSAL,ENTREGA_DIRECTA"
+    },
+    {
+      "fieldName": "direccionEntrega",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitudEntrega",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longitudEntrega",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "confirmado",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "codigoQR",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ubicacionActual",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fragil",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "clienteTokenAcceso",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Paquete",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "recepcionista",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "repartidor",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityName": "personaPaquete",
+      "relationshipName": "remitente",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "personaPaquete",
+      "relationshipName": "destinatario",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ruta",
+      "relationshipName": "ruta",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sucursal",
+      "relationshipName": "sucursalOrigen",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sucursal",
+      "relationshipName": "sucursalDestino",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

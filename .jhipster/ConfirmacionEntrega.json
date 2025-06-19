@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20250619182905"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaConfirmacion",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nombreReceptor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ciReceptor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "observaciones",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fotoReceptor",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ConfirmacionEntrega",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "paquete",
+      "relationshipName": "paquete",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

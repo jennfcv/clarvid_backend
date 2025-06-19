@@ -1,0 +1,176 @@
+application {
+  config {
+    baseName GestionPaqueteria
+    applicationType monolith
+    packageName com.paqueteria
+    authenticationType jwt
+    buildTool maven
+    clientFramework none
+    skipClient true
+    databaseType sql
+    devDatabaseType postgresql
+    prodDatabaseType postgresql
+    enableTranslation false
+    nativeLanguage es
+    languages [es]
+    testFrameworks [cucumber]
+    serviceDiscoveryType false
+    cacheProvider no
+    enableHibernateCache false
+    skipUserManagement false
+    reactive false
+    serverPort 8081
+  }
+
+  entities *
+}
+
+enum TipoEntrega {
+  RETIRO_SUCURSAL,
+  ENTREGA_DIRECTA
+}
+
+enum EstadoPaquete {
+  REGISTRADO,
+  EN_CAMINO,
+  EN_REPARTO,
+  ENTREGADO,
+  PENDIENTE_RETIRO,
+  INTENTO_FALLIDO,
+  CANCELADO
+}
+
+entity Sucursal {
+  nombre String required
+  direccion String required
+  pais String required
+  ciudad String required
+  telefono String
+  latitud Double
+  longitud Double
+}
+
+entity Recepcionista {
+  ci String required
+  telefono String
+  direccion String
+  fechaIngreso Instant
+  observaciones String
+}
+
+entity Repartidor {
+  ci String required
+  telefono String
+  direccion String
+  disponible Boolean
+  fechaIngreso Instant
+  medioTransporte String
+}
+
+entity PersonaPaquete {
+  ci String required
+  nombre String required
+  telefono String
+  direccion String required
+}
+
+entity Paquete {
+  codigoSeguimiento String required
+  descripcion String
+  detalle String
+  peso Double required
+  fechaEnvio Instant required
+  fechaEntregaEstimada Instant
+  estado EstadoPaquete required
+  tipoEntrega TipoEntrega required
+  direccionEntrega String
+  latitudEntrega Double
+  longitudEntrega Double
+  confirmado Boolean
+  codigoQR String
+  ubicacionActual String
+  fragil Boolean
+  clienteTokenAcceso String
+}
+
+entity SeguimientoPaquete {
+  estado String required
+  fecha Instant required
+  ubicacion String
+  observaciones String
+}
+
+entity ConfirmacionEntrega {
+  fechaConfirmacion Instant required
+  nombreReceptor String
+  ciReceptor String
+  observaciones String
+  fotoReceptor String
+}
+
+entity CalificacionEntrega {
+  puntaje Integer
+  comentario String
+  fechaCalificacion Instant
+}
+
+entity IntentoEntrega {
+  fechaIntento Instant required
+  resultado String required
+  observaciones String
+  proximoIntento Instant
+}
+
+entity UbicacionRepartidor {
+  latitud Double required
+  longitud Double required
+  fechaHora Instant required
+}
+
+entity ZonaEntrega {
+  nombre String required
+  descripcion String
+}
+
+entity Ruta {
+  nombre String required
+  descripcion String
+  activa Boolean
+}
+
+entity ReportePDF {
+  tipo String required
+  nombreArchivo String required
+  rutaArchivo String
+  fechaGeneracion Instant required
+}
+
+relationship OneToOne {
+  Recepcionista{usuario(login) required} to User with builtInEntity,
+  Repartidor{usuario(login) required} to User with builtInEntity
+}
+
+relationship ManyToOne {
+  Paquete{recepcionista(login)} to User with builtInEntity,
+  Paquete{repartidor(login)} to User with builtInEntity,
+
+  ConfirmacionEntrega{paquete} to Paquete,
+  CalificacionEntrega{paquete} to Paquete,
+  Paquete{remitente} to PersonaPaquete,
+  Paquete{destinatario} to PersonaPaquete,
+  Paquete{ruta} to Ruta,
+  Paquete{sucursalOrigen} to Sucursal,
+  Paquete{sucursalDestino} to Sucursal,
+  Ruta{zona} to ZonaEntrega,
+  Repartidor{zona} to ZonaEntrega,
+  SeguimientoPaquete{paquete} to Paquete,
+  IntentoEntrega{paquete} to Paquete,
+  ReportePDF{paquete} to Paquete,
+  UbicacionRepartidor{repartidor} to Repartidor,
+  Recepcionista{sucursal} to Sucursal,
+  Repartidor{sucursal} to Sucursal
+}
+
+dto * with mapstruct
+service * with serviceClass
+paginate * with pagination except User

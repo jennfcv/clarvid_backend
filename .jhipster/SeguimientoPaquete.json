@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250619182805"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "estado",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ubicacion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "observaciones",
+      "fieldType": "String"
+    }
+  ],
+  "name": "SeguimientoPaquete",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "paquete",
+      "relationshipName": "paquete",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

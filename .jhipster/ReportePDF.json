@@ -1,0 +1,41 @@
+{
+  "annotations": {
+    "changelogDate": "20250619183505"
+  },
+  "applications": ["GestionPaqueteria"],
+  "dto": "mapstruct",
+  "entityTableName": "reporte_pdf",
+  "fields": [
+    {
+      "fieldName": "tipo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nombreArchivo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rutaArchivo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaGeneracion",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "ReportePDF",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "paquete",
+      "relationshipName": "paquete",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
