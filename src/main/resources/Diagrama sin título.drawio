@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="26.2.14">
   <diagram name="Page-1" id="2YBvvXClWsGukQMizWep">
-    <mxGraphModel dx="1744" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1453" dy="732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <object label="" Administrador="" id="0">
           <mxCell />
@@ -225,10 +225,10 @@
         <mxCell id="ikK4sfzXIW42bjNt9WWu-55" value="[8: Usuario ya existe(por CI)]" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="160" y="400" width="170" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="ikK4sfzXIW42bjNt9WWu-58" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="ikK4sfzXIW42bjNt9WWu-60">
+        <mxCell id="ikK4sfzXIW42bjNt9WWu-58" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ikK4sfzXIW42bjNt9WWu-60">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="769.5" y="420" as="sourcePoint" />
-            <mxPoint x="439.5" y="420" as="targetPoint" />
+            <mxPoint x="510" y="411.49110320284694" as="sourcePoint" />
+            <mxPoint x="439.5" y="414" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="ikK4sfzXIW42bjNt9WWu-59" value="" style="endArrow=none;dashed=1;html=1;rounded=0;exitX=0.007;exitY=0.194;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
@@ -237,14 +237,14 @@
             <mxPoint x="820" y="457" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ikK4sfzXIW42bjNt9WWu-61" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="ikK4sfzXIW42bjNt9WWu-60">
+        <mxCell id="ikK4sfzXIW42bjNt9WWu-61" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="ikK4sfzXIW42bjNt9WWu-60">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="760" y="420" as="sourcePoint" />
-            <mxPoint x="439.5" y="420" as="targetPoint" />
+            <mxPoint x="760" y="414" as="sourcePoint" />
+            <mxPoint x="650" y="412" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="ikK4sfzXIW42bjNt9WWu-60" value="8: Usuario encontrado" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="510" y="405" width="140" height="30" as="geometry" />
+          <mxGeometry x="510" y="399" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="ikK4sfzXIW42bjNt9WWu-62" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="ikK4sfzXIW42bjNt9WWu-56">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -498,6 +498,21 @@
         </mxCell>
         <mxCell id="ikK4sfzXIW42bjNt9WWu-112" value="21: return RepartidorDTO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="190" y="866" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ikK4sfzXIW42bjNt9WWu-114" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0.387;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="604.88" y="436.039119804401" as="sourcePoint" />
+            <mxPoint x="639.88" y="436" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ikK4sfzXIW42bjNt9WWu-115" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.467;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="ikK4sfzXIW42bjNt9WWu-116">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440.13" y="434" as="sourcePoint" />
+            <mxPoint x="469.88" y="437" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ikK4sfzXIW42bjNt9WWu-116" value="9: error(&quot;ya existe un usuario con este CI&quot;)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="469.88" y="420" width="135" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
