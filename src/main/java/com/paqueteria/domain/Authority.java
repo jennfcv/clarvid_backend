@@ -28,6 +28,7 @@ public class Authority implements Serializable, Persistable<String> {
     @Transient
     private boolean isPersisted;
 
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public String getName() {

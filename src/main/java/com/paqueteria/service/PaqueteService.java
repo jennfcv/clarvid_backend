@@ -1,7 +1,9 @@
 package com.paqueteria.service;
 
 import com.paqueteria.domain.Paquete;
+import com.paqueteria.domain.PersonaPaquete;
 import com.paqueteria.repository.PaqueteRepository;
+import com.paqueteria.repository.PersonaPaqueteRepository;
 import com.paqueteria.service.dto.PaqueteDTO;
 import com.paqueteria.service.mapper.PaqueteMapper;
 import java.util.Optional;
@@ -19,15 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PaqueteService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PaqueteService.class);
+    private final Logger log = LoggerFactory.getLogger(PaqueteService.class);
 
     private final PaqueteRepository paqueteRepository;
-
     private final PaqueteMapper paqueteMapper;
+    private final PersonaPaqueteRepository personaPaqueteRepository;
 
-    public PaqueteService(PaqueteRepository paqueteRepository, PaqueteMapper paqueteMapper) {
+    public PaqueteService(
+        PaqueteRepository paqueteRepository,
+        PaqueteMapper paqueteMapper,
+        PersonaPaqueteRepository personaPaqueteRepository
+    ) {
         this.paqueteRepository = paqueteRepository;
         this.paqueteMapper = paqueteMapper;
+        this.personaPaqueteRepository = personaPaqueteRepository;
     }
 
     /**
@@ -37,8 +44,22 @@ public class PaqueteService {
      * @return the persisted entity.
      */
     public PaqueteDTO save(PaqueteDTO paqueteDTO) {
-        LOG.debug("Request to save Paquete : {}", paqueteDTO);
+        log.debug("Request to save Paquete : {}", paqueteDTO);
+
         Paquete paquete = paqueteMapper.toEntity(paqueteDTO);
+
+        // Guardar remitente si es nuevo
+        if (paquete.getRemitente() != null && paquete.getRemitente().getId() == null) {
+            PersonaPaquete remitente = personaPaqueteRepository.save(paquete.getRemitente());
+            paquete.setRemitente(remitente);
+        }
+
+        // Guardar destinatario si es nuevo
+        if (paquete.getDestinatario() != null && paquete.getDestinatario().getId() == null) {
+            PersonaPaquete destinatario = personaPaqueteRepository.save(paquete.getDestinatario());
+            paquete.setDestinatario(destinatario);
+        }
+
         paquete = paqueteRepository.save(paquete);
         return paqueteMapper.toDto(paquete);
     }
@@ -46,55 +67,14 @@ public class PaqueteService {
     /**
      * Update a paquete.
      *
-     * @param paqueteDTO the entity to save.
+     * @param paqueteDTO the entity to update.
      * @return the persisted entity.
      */
     public PaqueteDTO update(PaqueteDTO paqueteDTO) {
-        LOG.debug("Request to update Paquete : {}", paqueteDTO);
+        log.debug("Request to update Paquete : {}", paqueteDTO);
         Paquete paquete = paqueteMapper.toEntity(paqueteDTO);
         paquete = paqueteRepository.save(paquete);
         return paqueteMapper.toDto(paquete);
-    }
-
-    /**
-     * Partially update a paquete.
-     *
-     * @param paqueteDTO the entity to update partially.
-     * @return the persisted entity.
-     */
-    public Optional<PaqueteDTO> partialUpdate(PaqueteDTO paqueteDTO) {
-        LOG.debug("Request to partially update Paquete : {}", paqueteDTO);
-
-        return paqueteRepository
-            .findById(paqueteDTO.getId())
-            .map(existingPaquete -> {
-                paqueteMapper.partialUpdate(existingPaquete, paqueteDTO);
-
-                return existingPaquete;
-            })
-            .map(paqueteRepository::save)
-            .map(paqueteMapper::toDto);
-    }
-
-    /**
-     * Get all the paquetes.
-     *
-     * @param pageable the pagination information.
-     * @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public Page<PaqueteDTO> findAll(Pageable pageable) {
-        LOG.debug("Request to get all Paquetes");
-        return paqueteRepository.findAll(pageable).map(paqueteMapper::toDto);
-    }
-
-    /**
-     * Get all the paquetes with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    public Page<PaqueteDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return paqueteRepository.findAllWithEagerRelationships(pageable).map(paqueteMapper::toDto);
     }
 
     /**
@@ -105,8 +85,8 @@ public class PaqueteService {
      */
     @Transactional(readOnly = true)
     public Optional<PaqueteDTO> findOne(Long id) {
-        LOG.debug("Request to get Paquete : {}", id);
-        return paqueteRepository.findOneWithEagerRelationships(id).map(paqueteMapper::toDto);
+        log.debug("Request to get Paquete : {}", id);
+        return paqueteRepository.findById(id).map(paqueteMapper::toDto);
     }
 
     /**
@@ -115,7 +95,22 @@ public class PaqueteService {
      * @param id the id of the entity.
      */
     public void delete(Long id) {
-        LOG.debug("Request to delete Paquete : {}", id);
+        log.debug("Request to delete Paquete : {}", id);
         paqueteRepository.deleteById(id);
     }
+
+    /**
+     * Get all the paquetes.
+     *
+     * @param pageable the pagination information.
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public Page<PaqueteDTO> findAll(Pageable pageable) {
+        return paqueteRepository.findAll(pageable).map(paqueteMapper::toDto);
+    }
+    public Page<Paquete> findAllWithEagerRelationships(Pageable pageable) {
+        return paqueteRepository.findAll(pageable); // sin fetch joins reales
+    }
+
 }

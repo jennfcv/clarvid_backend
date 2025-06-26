@@ -117,4 +117,33 @@ public class MailService {
         LOG.debug("Sending password reset email to '{}'", user.getEmail());
         sendEmailFromTemplateSync(user, "mail/passwordResetEmail", "email.reset.title");
     }
+    @Async
+    public void sendCreationEmail(User user, String password) {
+        if (user == null || password == null) {
+            LOG.error(
+                "No se puede enviar el correo: Datos incompletos. User: {}, Password: {}",
+                user == null ? "null" : "presente",
+                password == null ? "null" : "presente"
+            );
+            return;
+        }
+
+        if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
+            LOG.error("No se puede enviar el correo: Email vacío o nulo para el usuario '{}'", user.getLogin());
+            return;
+        }
+
+        else {
+            Locale locale = Locale.forLanguageTag(user.getLangKey() != null ? user.getLangKey() : "es");
+            Context context = new Context(locale);
+            context.setVariable(USER, user);
+            context.setVariable("password", password);
+            context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+
+            String content = templateEngine.process("mail/creationEmail", context);
+            String subject = messageSource.getMessage("email.creation.title", null, locale);
+
+            sendEmail(user.getEmail(), subject, content, false, true);
+        }
+    }
 }

@@ -22,7 +22,16 @@ public class PersonaPaqueteDTO implements Serializable {
 
     @NotNull
     private String direccion;
+    private String email;
 
+    // Agregar getters y setters
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public Long getId() {
         return id;
     }
@@ -93,6 +102,7 @@ public class PersonaPaqueteDTO implements Serializable {
             ", nombre='" + getNombre() + "'" +
             ", telefono='" + getTelefono() + "'" +
             ", direccion='" + getDireccion() + "'" +
+            ", email='" + getEmail() + "'" +
             "}";
     }
 }

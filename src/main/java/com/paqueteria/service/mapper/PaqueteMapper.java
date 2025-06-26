@@ -17,25 +17,30 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface PaqueteMapper extends EntityMapper<PaqueteDTO, Paquete> {
+
     @Mapping(target = "recepcionista", source = "recepcionista", qualifiedByName = "userLogin")
     @Mapping(target = "repartidor", source = "repartidor", qualifiedByName = "userLogin")
-    @Mapping(target = "remitente", source = "remitente", qualifiedByName = "personaPaqueteId")
-    @Mapping(target = "destinatario", source = "destinatario", qualifiedByName = "personaPaqueteId")
+    @Mapping(target = "remitente", source = "remitente")
+    @Mapping(target = "destinatario", source = "destinatario")
     @Mapping(target = "ruta", source = "ruta", qualifiedByName = "rutaId")
     @Mapping(target = "sucursalOrigen", source = "sucursalOrigen", qualifiedByName = "sucursalId")
     @Mapping(target = "sucursalDestino", source = "sucursalDestino", qualifiedByName = "sucursalId")
     PaqueteDTO toDto(Paquete s);
+
+    @Mapping(target = "recepcionista", source = "recepcionista")
+    @Mapping(target = "repartidor", source = "repartidor")
+    @Mapping(target = "remitente", source = "remitente")
+    @Mapping(target = "destinatario", source = "destinatario")
+    @Mapping(target = "ruta", source = "ruta")
+    @Mapping(target = "sucursalOrigen", source = "sucursalOrigen")
+    @Mapping(target = "sucursalDestino", source = "sucursalDestino")
+    Paquete toEntity(PaqueteDTO dto);
 
     @Named("userLogin")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "login", source = "login")
     UserDTO toDtoUserLogin(User user);
-
-    @Named("personaPaqueteId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    PersonaPaqueteDTO toDtoPersonaPaqueteId(PersonaPaquete personaPaquete);
 
     @Named("rutaId")
     @BeanMapping(ignoreByDefault = true)

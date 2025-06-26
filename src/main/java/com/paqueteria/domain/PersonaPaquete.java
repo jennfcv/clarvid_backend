@@ -35,6 +35,22 @@ public class PersonaPaquete implements Serializable {
     @Column(name = "direccion", nullable = false)
     private String direccion;
 
+    @Column(name = "email")
+    private String email;
+
+    // Agregar getters y setters
+    public String getEmail() {
+        return this.email;
+    }
+
+    public PersonaPaquete email(String email) {
+        this.setEmail(email);
+        return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -130,6 +146,7 @@ public class PersonaPaquete implements Serializable {
             ", nombre='" + getNombre() + "'" +
             ", telefono='" + getTelefono() + "'" +
             ", direccion='" + getDireccion() + "'" +
+            ", email='" + getEmail() + "'" +
             "}";
     }
 }

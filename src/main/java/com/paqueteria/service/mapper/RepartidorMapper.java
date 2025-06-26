@@ -10,15 +10,22 @@ import com.paqueteria.service.dto.UserDTO;
 import com.paqueteria.service.dto.ZonaEntregaDTO;
 import org.mapstruct.*;
 
-/**
- * Mapper for the entity {@link Repartidor} and its DTO {@link RepartidorDTO}.
- */
 @Mapper(componentModel = "spring")
 public interface RepartidorMapper extends EntityMapper<RepartidorDTO, Repartidor> {
+
+    @Override
+    @Mapping(target = "email", source = "usuario.email")
     @Mapping(target = "usuario", source = "usuario", qualifiedByName = "userLogin")
     @Mapping(target = "zona", source = "zona", qualifiedByName = "zonaEntregaId")
     @Mapping(target = "sucursal", source = "sucursal", qualifiedByName = "sucursalId")
     RepartidorDTO toDto(Repartidor s);
+
+    @Override
+    @Mapping(target = "usuario", ignore = true)
+    @Mapping(target = "zona", source = "zona")
+    @Mapping(target = "sucursal", source = "sucursal")
+    Repartidor toEntity(RepartidorDTO repartidorDTO);
+
 
     @Named("userLogin")
     @BeanMapping(ignoreByDefault = true)

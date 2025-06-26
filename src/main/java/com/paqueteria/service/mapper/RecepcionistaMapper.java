@@ -2,10 +2,8 @@ package com.paqueteria.service.mapper;
 
 import com.paqueteria.domain.Recepcionista;
 import com.paqueteria.domain.Sucursal;
-import com.paqueteria.domain.User;
 import com.paqueteria.service.dto.RecepcionistaDTO;
 import com.paqueteria.service.dto.SucursalDTO;
-import com.paqueteria.service.dto.UserDTO;
 import org.mapstruct.*;
 
 /**
@@ -13,15 +11,14 @@ import org.mapstruct.*;
  */
 @Mapper(componentModel = "spring")
 public interface RecepcionistaMapper extends EntityMapper<RecepcionistaDTO, Recepcionista> {
-    @Mapping(target = "usuario", source = "usuario", qualifiedByName = "userLogin")
-    @Mapping(target = "sucursal", source = "sucursal", qualifiedByName = "sucursalId")
-    RecepcionistaDTO toDto(Recepcionista s);
 
-    @Named("userLogin")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "login", source = "login")
-    UserDTO toDtoUserLogin(User user);
+    @Override
+    @Mapping(target = "sucursal", source = "sucursal", qualifiedByName = "sucursalId")
+    @Mapping(target = "email", source = "usuario.email")
+    @Mapping(target = "ci", source = "ci")
+    @Mapping(target = "nombre", source = "nombre")
+    @Mapping(target = "apellido", source = "apellido")
+    RecepcionistaDTO toDto(Recepcionista entity);
 
     @Named("sucursalId")
     @BeanMapping(ignoreByDefault = true)

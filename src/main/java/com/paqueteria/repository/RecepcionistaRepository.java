@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RecepcionistaRepository extends JpaRepository<Recepcionista, Long> {
+
     default Optional<Recepcionista> findOneWithEagerRelationships(Long id) {
         return this.findOneWithToOneRelationships(id);
     }
@@ -27,14 +28,14 @@ public interface RecepcionistaRepository extends JpaRepository<Recepcionista, Lo
     }
 
     @Query(
-        value = "select recepcionista from Recepcionista recepcionista left join fetch recepcionista.usuario",
+        value = "select recepcionista from Recepcionista recepcionista left join fetch recepcionista.usuario left join fetch recepcionista.sucursal",
         countQuery = "select count(recepcionista) from Recepcionista recepcionista"
     )
     Page<Recepcionista> findAllWithToOneRelationships(Pageable pageable);
 
-    @Query("select recepcionista from Recepcionista recepcionista left join fetch recepcionista.usuario")
+    @Query("select recepcionista from Recepcionista recepcionista left join fetch recepcionista.usuario left join fetch recepcionista.sucursal")
     List<Recepcionista> findAllWithToOneRelationships();
 
-    @Query("select recepcionista from Recepcionista recepcionista left join fetch recepcionista.usuario where recepcionista.id =:id")
+    @Query("select recepcionista from Recepcionista recepcionista left join fetch recepcionista.usuario left join fetch recepcionista.sucursal where recepcionista.id =:id")
     Optional<Recepcionista> findOneWithToOneRelationships(@Param("id") Long id);
 }

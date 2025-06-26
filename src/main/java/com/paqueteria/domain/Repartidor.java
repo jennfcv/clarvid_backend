@@ -5,9 +5,6 @@ import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
 
-/**
- * A Repartidor.
- */
 @Entity
 @Table(name = "repartidor")
 @SuppressWarnings("common-java:DuplicatedBlocks")
@@ -22,13 +19,32 @@ public class Repartidor implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "ci", nullable = false)
+    @Size(min = 1, max = 50)
+    @Column(name = "ci", length = 50, nullable = false, unique = true)
     private String ci;
 
-    @Column(name = "telefono")
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "nombre", length = 100, nullable = false)
+    private String nombre;
+
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "apellido", length = 100, nullable = false)
+    private String apellido;
+
+    @NotNull
+    @Email
+    @Size(min = 5, max = 254)
+    @Column(name = "email", length = 254, nullable = false, unique = true)
+    private String email;
+
+    @Size(max = 20)
+    @Column(name = "telefono", length = 20)
     private String telefono;
 
-    @Column(name = "direccion")
+    @Size(max = 255)
+    @Column(name = "direccion", length = 255)
     private String direccion;
 
     @Column(name = "disponible")
@@ -37,181 +53,100 @@ public class Repartidor implements Serializable {
     @Column(name = "fecha_ingreso")
     private Instant fechaIngreso;
 
-    @Column(name = "medio_transporte")
+    @Size(max = 50)
+    @Column(name = "medio_transporte", length = 50)
     private String medioTransporte;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @NotNull
-    @JoinColumn(unique = true)
+    @JoinColumn(name = "usuario_id", unique = true)
     private User usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "zona_id")
     private ZonaEntrega zona;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sucursal_id")
     private Sucursal sucursal;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    // Getters y Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public Repartidor id(Long id) { this.setId(id); return this; }
 
-    public Long getId() {
-        return this.id;
-    }
+    public String getCi() { return ci; }
+    public void setCi(String ci) { this.ci = ci; }
+    public Repartidor ci(String ci) { this.setCi(ci); return this; }
 
-    public Repartidor id(Long id) {
-        this.setId(id);
-        return this;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public Repartidor nombre(String nombre) { this.setNombre(nombre); return this; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
+    public Repartidor apellido(String apellido) { this.setApellido(apellido); return this; }
 
-    public String getCi() {
-        return this.ci;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public Repartidor email(String email) { this.setEmail(email); return this; }
 
-    public Repartidor ci(String ci) {
-        this.setCi(ci);
-        return this;
-    }
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public Repartidor telefono(String telefono) { this.setTelefono(telefono); return this; }
 
-    public void setCi(String ci) {
-        this.ci = ci;
-    }
+    public String getDireccion() { return direccion; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+    public Repartidor direccion(String direccion) { this.setDireccion(direccion); return this; }
 
-    public String getTelefono() {
-        return this.telefono;
-    }
+    public Boolean getDisponible() { return disponible; }
+    public void setDisponible(Boolean disponible) { this.disponible = disponible; }
+    public Repartidor disponible(Boolean disponible) { this.setDisponible(disponible); return this; }
 
-    public Repartidor telefono(String telefono) {
-        this.setTelefono(telefono);
-        return this;
-    }
+    public Instant getFechaIngreso() { return fechaIngreso; }
+    public void setFechaIngreso(Instant fechaIngreso) { this.fechaIngreso = fechaIngreso; }
+    public Repartidor fechaIngreso(Instant fechaIngreso) { this.setFechaIngreso(fechaIngreso); return this; }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+    public String getMedioTransporte() { return medioTransporte; }
+    public void setMedioTransporte(String medioTransporte) { this.medioTransporte = medioTransporte; }
+    public Repartidor medioTransporte(String medioTransporte) { this.setMedioTransporte(medioTransporte); return this; }
 
-    public String getDireccion() {
-        return this.direccion;
-    }
+    public User getUsuario() { return usuario; }
+    public void setUsuario(User usuario) { this.usuario = usuario; }
+    public Repartidor usuario(User usuario) { this.setUsuario(usuario); return this; }
 
-    public Repartidor direccion(String direccion) {
-        this.setDireccion(direccion);
-        return this;
-    }
+    public ZonaEntrega getZona() { return zona; }
+    public void setZona(ZonaEntrega zona) { this.zona = zona; }
+    public Repartidor zona(ZonaEntrega zona) { this.setZona(zona); return this; }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public Boolean getDisponible() {
-        return this.disponible;
-    }
-
-    public Repartidor disponible(Boolean disponible) {
-        this.setDisponible(disponible);
-        return this;
-    }
-
-    public void setDisponible(Boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public Instant getFechaIngreso() {
-        return this.fechaIngreso;
-    }
-
-    public Repartidor fechaIngreso(Instant fechaIngreso) {
-        this.setFechaIngreso(fechaIngreso);
-        return this;
-    }
-
-    public void setFechaIngreso(Instant fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
-
-    public String getMedioTransporte() {
-        return this.medioTransporte;
-    }
-
-    public Repartidor medioTransporte(String medioTransporte) {
-        this.setMedioTransporte(medioTransporte);
-        return this;
-    }
-
-    public void setMedioTransporte(String medioTransporte) {
-        this.medioTransporte = medioTransporte;
-    }
-
-    public User getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(User user) {
-        this.usuario = user;
-    }
-
-    public Repartidor usuario(User user) {
-        this.setUsuario(user);
-        return this;
-    }
-
-    public ZonaEntrega getZona() {
-        return this.zona;
-    }
-
-    public void setZona(ZonaEntrega zonaEntrega) {
-        this.zona = zonaEntrega;
-    }
-
-    public Repartidor zona(ZonaEntrega zonaEntrega) {
-        this.setZona(zonaEntrega);
-        return this;
-    }
-
-    public Sucursal getSucursal() {
-        return this.sucursal;
-    }
-
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
-    }
-
-    public Repartidor sucursal(Sucursal sucursal) {
-        this.setSucursal(sucursal);
-        return this;
-    }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+    public Sucursal getSucursal() { return sucursal; }
+    public void setSucursal(Sucursal sucursal) { this.sucursal = sucursal; }
+    public Repartidor sucursal(Sucursal sucursal) { this.setSucursal(sucursal); return this; }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Repartidor)) {
-            return false;
-        }
+        if (this == o) return true;
+        if (!(o instanceof Repartidor)) return false;
         return getId() != null && getId().equals(((Repartidor) o).getId());
     }
 
     @Override
     public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
         return getClass().hashCode();
     }
 
-    // prettier-ignore
     @Override
     public String toString() {
         return "Repartidor{" +
             "id=" + getId() +
             ", ci='" + getCi() + "'" +
+            ", nombre='" + getNombre() + "'" +
+            ", apellido='" + getApellido() + "'" +
+            ", email='" + getEmail() + "'" +
             ", telefono='" + getTelefono() + "'" +
             ", direccion='" + getDireccion() + "'" +
-            ", disponible='" + getDisponible() + "'" +
-            ", fechaIngreso='" + getFechaIngreso() + "'" +
+            ", disponible=" + getDisponible() +
+            ", fechaIngreso=" + getFechaIngreso() +
             ", medioTransporte='" + getMedioTransporte() + "'" +
             "}";
     }

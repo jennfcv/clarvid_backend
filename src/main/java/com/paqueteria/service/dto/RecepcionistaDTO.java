@@ -11,10 +11,19 @@ import java.util.Objects;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class RecepcionistaDTO implements Serializable {
 
+    @NotNull
+    private String nombre;
+
+    @NotNull
+    private String apellido;
+
     private Long id;
 
     @NotNull
     private String ci;
+
+    @NotNull
+    private String email;
 
     private String telefono;
 
@@ -24,108 +33,74 @@ public class RecepcionistaDTO implements Serializable {
 
     private String observaciones;
 
-    @NotNull
-    private UserDTO usuario;
-
     private SucursalDTO sucursal;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public String getCi() {
-        return ci;
-    }
+    public String getCi() { return ci; }
 
-    public void setCi(String ci) {
-        this.ci = ci;
-    }
+    public void setCi(String ci) { this.ci = ci; }
 
-    public String getTelefono() {
-        return telefono;
-    }
+    public String getEmail() { return email; }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getDireccion() {
-        return direccion;
-    }
+    public String getTelefono() { return telefono; }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
 
-    public Instant getFechaIngreso() {
-        return fechaIngreso;
-    }
+    public String getDireccion() { return direccion; }
 
-    public void setFechaIngreso(Instant fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
+    public Instant getFechaIngreso() { return fechaIngreso; }
 
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
+    public void setFechaIngreso(Instant fechaIngreso) { this.fechaIngreso = fechaIngreso; }
 
-    public UserDTO getUsuario() {
-        return usuario;
-    }
+    public String getObservaciones() { return observaciones; }
 
-    public void setUsuario(UserDTO usuario) {
-        this.usuario = usuario;
-    }
+    public void setObservaciones(String observaciones) { this.observaciones = observaciones; }
 
-    public SucursalDTO getSucursal() {
-        return sucursal;
-    }
+    public SucursalDTO getSucursal() { return sucursal; }
 
-    public void setSucursal(SucursalDTO sucursal) {
-        this.sucursal = sucursal;
-    }
+    public void setSucursal(SucursalDTO sucursal) { this.sucursal = sucursal; }
+
+    public String getNombre() { return nombre; }
+
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getApellido() { return apellido; }
+
+    public void setApellido(String apellido) { this.apellido = apellido; }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof RecepcionistaDTO)) {
-            return false;
-        }
-
-        RecepcionistaDTO recepcionistaDTO = (RecepcionistaDTO) o;
-        if (this.id == null) {
-            return false;
-        }
-        return Objects.equals(this.id, recepcionistaDTO.id);
+        if (this == o) return true;
+        if (!(o instanceof RecepcionistaDTO)) return false;
+        RecepcionistaDTO that = (RecepcionistaDTO) o;
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id);
+        return Objects.hash(id);
     }
 
-    // prettier-ignore
     @Override
     public String toString() {
         return "RecepcionistaDTO{" +
-            "id=" + getId() +
-            ", ci='" + getCi() + "'" +
-            ", telefono='" + getTelefono() + "'" +
-            ", direccion='" + getDireccion() + "'" +
-            ", fechaIngreso='" + getFechaIngreso() + "'" +
-            ", observaciones='" + getObservaciones() + "'" +
-            ", usuario=" + getUsuario() +
-            ", sucursal=" + getSucursal() +
-            "}";
+            "id=" + id +
+            ", nombre='" + nombre + '\'' +
+            ", apellido='" + apellido + '\'' +
+            ", ci='" + ci + '\'' +
+            ", email='" + email + '\'' +
+            ", telefono='" + telefono + '\'' +
+            ", direccion='" + direccion + '\'' +
+            ", fechaIngreso=" + fechaIngreso +
+            ", observaciones='" + observaciones + '\'' +
+            ", sucursal=" + sucursal +
+            '}';
     }
 }

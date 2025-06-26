@@ -258,6 +258,39 @@ public class PaqueteDTO implements Serializable {
         this.sucursalDestino = sucursalDestino;
     }
 
+
+    // Agregar estas validaciones al final de la clase PaqueteDTO
+    @AssertTrue(message = "Sucursal destino es requerida para retiro en sucursal")
+    private boolean isSucursalDestinoValid() {
+        return tipoEntrega != TipoEntrega.RETIRO_SUCURSAL || sucursalDestino != null;
+    }
+
+    @AssertTrue(message = "Coordenadas son requeridas para entrega directa")
+    private boolean isCoordenadasValid() {
+        return tipoEntrega != TipoEntrega.ENTREGA_DIRECTA ||
+            (latitudEntrega != null && longitudEntrega != null);
+    }
+
+    @AssertTrue(message = "Dirección de entrega es requerida para entrega directa")
+    private boolean isDireccionEntregaValid() {
+        return tipoEntrega != TipoEntrega.ENTREGA_DIRECTA ||
+            (direccionEntrega != null && !direccionEntrega.isEmpty());
+    }
+
+    @AssertTrue(message = "Remitente y destinatario son obligatorios")
+    private boolean isPersonasValid() {
+        return remitente != null && destinatario != null;
+    }
+
+    @AssertTrue(message = "Email del remitente es requerido")
+    private boolean isRemitenteEmailValid() {
+        return remitente == null || remitente.getEmail() != null;
+    }
+
+    @AssertTrue(message = "Email del destinatario es requerido")
+    private boolean isDestinatarioEmailValid() {
+        return destinatario == null || destinatario.getEmail() != null;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) {
